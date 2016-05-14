@@ -37,4 +37,5 @@ VOLUME ["/var/www/whatsspy"]
 
 EXPOSE 80
 
+CMD ["service", "php5-fpm", "start;"]
 CMD ["nginx", "-g", "daemon off;"]
