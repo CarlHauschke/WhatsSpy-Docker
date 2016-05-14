@@ -1,0 +1,36 @@
+FROM ubuntu:14.04
+
+RUN apt-get update
+RUN apt-get install -y nginx \
+		php5 \
+		php5-cli \
+		php5-curl \
+		php5-fpm \
+		php5-pgsql \
+		php5-mcrypt \
+		php5-sqlite \
+		git-core
+
+RUN sed -i -- 's/listen = 127.0.0.1/listen = \/var\/run\/php5-fpm.sock/g' /etc/php5/fpm/pool.d/www.conf \
+    		&& service php5-fpm restart \
+    		&& if ! grep -q "extension=mcrypt.so" /etc/php5/cli/php.ini; then echo "extension=mcrypt.so" >> /etc/php5/cli/php.ini; fi \
+
+RUN mkdir -p /var/www/whatsspy/ \
+		&& cd /var/www/whatsspy/ \
+		&& git init \
+		&& git remote add origin https://gitlab.maikel.pro/maikeldus/WhatsSpy-Public.git \
+		&& git pull origin master
+
+RUN chown www-data:www-data -R /var/www/whatsspy/ \
+    		&& chmod 775 -R /var/www/whatsspy/ \
+    		&& chmod 760 -R /var/www/whatsspy/api/whatsapp/src/wadata/ \
+    		&& chmod 760 -R /var/www/whatsspy/images/profilepicture/
+
+COPY docker-* /var/www/whatsspy/api/tools/controls/
+COPY config.php /var/www/whatsspy/api/
+
+VOLUME ["/var/www/whatsspy"]
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
