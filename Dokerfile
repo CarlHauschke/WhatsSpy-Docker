@@ -13,7 +13,7 @@ RUN apt-get install -y nginx \
 
 RUN sed -i -- 's/listen = 127.0.0.1/listen = \/var\/run\/php5-fpm.sock/g' /etc/php5/fpm/pool.d/www.conf \
     		&& service php5-fpm restart \
-    		&& if ! grep -q "extension=mcrypt.so" /etc/php5/cli/php.ini; then echo "extension=mcrypt.so" >> /etc/php5/cli/php.ini; fi \
+    		&& if ! grep -q "extension=mcrypt.so" /etc/php5/cli/php.ini; then echo "extension=mcrypt.so" >> /etc/php5/cli/php.ini; fi
 
 RUN mkdir -p /var/www/whatsspy/ \
 		&& cd /var/www/whatsspy/ \
