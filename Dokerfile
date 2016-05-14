@@ -1,5 +1,9 @@
 FROM ubuntu:14.04
 
+ENV pgsql-host="localhost" pgsql-port="5432" pgsql-dbname="whatsspy" pgsql-user="whatsspy" pgsql-password="" \
+		whatsappAuth-number="" whatsappAuth-secret="" \
+		whatsspy-password="whatsspypublic"
+
 RUN apt-get update
 RUN apt-get install -y nginx \
 		php5 \
@@ -12,7 +16,6 @@ RUN apt-get install -y nginx \
 		git-core
 
 RUN sed -i -- 's/listen = 127.0.0.1/listen = \/var\/run\/php5-fpm.sock/g' /etc/php5/fpm/pool.d/www.conf \
-    		&& service php5-fpm restart \
     		&& if ! grep -q "extension=mcrypt.so" /etc/php5/cli/php.ini; then echo "extension=mcrypt.so" >> /etc/php5/cli/php.ini; fi
 
 RUN mkdir -p /var/www/whatsspy/ \

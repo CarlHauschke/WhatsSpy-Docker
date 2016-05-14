@@ -12,11 +12,11 @@
 // -------------------------------------------------
 
 // Postgres database user & password.
-$dbAuth = 			["host" => "localhost",
-					 "port" => "5432",
-					 "dbname" => "whatsspy",	// Make sure you understand the difference between schema and database in PostgreSQL.
-					 "user" => "whatsspy", 
-		   			 "password" => ""];
+$dbAuth = 			["host" => "pgsql-host",
+					 "port" => "pgsql-port",
+					 "dbname" => "pgsql-dbname",	// Make sure you understand the difference between schema and database in PostgreSQL.
+					 "user" => "pgsql-user", 
+		   			 "password" => "pgsql-password"];
 
 // Whatsapp login number & secret.
 // "number" may only contain:
@@ -24,14 +24,14 @@ $dbAuth = 			["host" => "localhost",
 // - Needs to be without any prefix 0"s. 0031 06 xxx becomes 31 6 xxx (no 0"s prefix for both the country code and phonenumber itself).
 // "secret" is the string of characters ending with a "=". Use WART or look at the wiki to retrieve this.
 // Debug might be handy if you want debug information about WhatsApp exceptions occuring.
-$whatsappAuth = 	["number" => "",
-				 	 "secret" => "",
+$whatsappAuth = 	["number" => "whatsappAuth-number",
+				 	 "secret" => "whatsappAuth-secret",
 				 	 "debug" => false];
 
 // Password to use in the WhatsSpy Public application
 // NOTE: You can disable the password by setting it to false ($whatsspyPublicAuth = false;). This is not advised for installations that are accesable from the internet!
 // NOTE 2: Do not use your primary password for this setting.			 	 
-$whatsspyPublicAuth = "whatsspypublic";
+$whatsspyPublicAuth = "whatsspy-password";
 
 // Set your timezone
 // Check for all timezones: http://php.net/manual/en/timezones.php
