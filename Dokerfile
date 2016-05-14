@@ -28,6 +28,7 @@ RUN chown www-data:www-data -R /var/www/whatsspy/ \
 
 COPY docker-startup.sh /var/www/whatsspy/api/tools/controls/
 COPY config.php /var/www/whatsspy/api/
+COPY nginx-config /etc/nginx/sites-available/default
 
 VOLUME ["/var/www/whatsspy"]
 
