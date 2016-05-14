@@ -5,7 +5,7 @@ if ( set -o noclobber; echo "locked" > "$LOCKFILE") 2> /dev/null; then
   	# Start tracker session
 	# Started under the user www-data
 	# Called from the api/ dir.
-	/var/www/whatsspy/api/tools/controls/whatsspy-public-tracker
+	php /var/www/whatsspy/api/tracker.php | tee /var/www/whatsspy/api/tracker.log
 	echo "Started tracker session."
 else
   echo "Lock failed - exit"

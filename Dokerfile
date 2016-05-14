@@ -26,7 +26,7 @@ RUN chown www-data:www-data -R /var/www/whatsspy/ \
     		&& chmod 760 -R /var/www/whatsspy/api/whatsapp/src/wadata/ \
     		&& chmod 760 -R /var/www/whatsspy/images/profilepicture/
 
-COPY docker-* /var/www/whatsspy/api/tools/controls/
+COPY docker-startup.sh /var/www/whatsspy/api/tools/controls/
 COPY config.php /var/www/whatsspy/api/
 
 VOLUME ["/var/www/whatsspy"]
