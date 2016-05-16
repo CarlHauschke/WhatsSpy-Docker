@@ -1,4 +1,5 @@
 #!/bin/sh
+service nginx start
 service php5-fpm start
 
 cd /var/www/whatsspy
