@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 service php5-fpm start
 
 cd /var/www/whatsspy
