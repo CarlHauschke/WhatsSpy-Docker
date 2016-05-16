@@ -1,5 +1,7 @@
 FROM ubuntu:14.04
 
+MAINTAINER Carl Hauschke <mail@carl.technology>
+
 ENV pgsql-host="localhost" pgsql-port="5432" pgsql-dbname="whatsspy" pgsql-user="whatsspy" pgsql-password="" \
 		whatsappAuth-number="" whatsappAuth-secret="" \
 		whatsspy-password="whatsspypublic"
