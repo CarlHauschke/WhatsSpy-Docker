@@ -41,4 +41,4 @@ EXPOSE 80
 
 CMD ["service", "php5-fpm", "start;"]
 CMD ["nginx", "-g", "daemon off;"]
-ENTRYPOINT ["api/tools/controls/entrypoint.sh"]
+ENTRYPOINT ["/var/www/whatsspy/api/tools/controls/entrypoint.sh"]
