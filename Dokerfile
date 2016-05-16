@@ -31,6 +31,7 @@ RUN chown www-data:www-data -R /var/www/whatsspy/ \
     		&& chmod 760 -R /var/www/whatsspy/images/profilepicture/
 
 COPY docker-startup.sh /var/www/whatsspy/api/tools/controls/
+COPY entrypoint.sh /var/www/whatsspy/api/tools/controls/
 COPY config.php /var/www/whatsspy/api/
 COPY nginx-config /etc/nginx/sites-available/default
 
